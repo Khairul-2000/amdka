@@ -1,0 +1,21 @@
+services:
+
+  fastapi:
+    build:
+      context: ./FastapiServer
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./FastapiServer:/app
+    # Uncomment and adjust the following if your FastAPI Dockerfile supports hot-reload (e.g., using uvicorn --reload)
+    # command: uvicorn src.server:app --reload --host 0.0.0.0 --port 8000
+
+  node:
+    build:
+      context: ./NoderServer
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./NoderServer:/app
