@@ -4,7 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.ts"
+    "start": "nodemon ./src/index.ts",
+    "dev": "nodemon ./src/index.ts",
+    "build": "tsc",
+    "start:prod": "node dist/index.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:reset": "prisma migrate reset --force",
+    "db:studio": "prisma studio",
+    "db:seed": "ts-node prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
