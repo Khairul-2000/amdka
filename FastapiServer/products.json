@@ -1,641 +1,326 @@
 [
     {
-        "sl_no": 1,
-        "product_name": "Product 1",
-        "description": "This is the description for product 1.",
-        "images": [
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f"
-        ],
-        "sizes": [
-            "M",
-            "S"
-        ],
-        "colors": [
-            "Blue",
-            "Gray",
-            "White"
-        ],
-        "price": 69366,
-        "offer_price": 29678,
-        "affiate_link": "https://affiliate.example.com/product/1",
-        "agent_name": "AutoWorld",
-        "category": "Car"
+      "id": "shirt001",
+      "sl_no": 1,
+      "product_name": "Classic T-Shirt",
+      "description": "A comfortable cotton t-shirt for everyday wear.",
+      "images": ["https://example.com/shirt001.png"],
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["White", "Black", "Blue"],
+      "price": 1999,
+      "offer_price": 1499,
+      "affiate_link": "https://affiliate.example.com/product/shirt001",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 2,
-        "product_name": "Product 2",
-        "description": "This is the description for product 2.",
-        "images": [
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f"
-        ],
-        "sizes": [
-            "XL",
-            "XXL",
-            "S"
-        ],
-        "colors": [
-            "Blue",
-            "Black",
-            "Orange",
-            "White",
-            "Gray",
-            "Red"
-        ],
-        "price": 34719,
-        "offer_price": 64195,
-        "affiate_link": "https://affiliate.example.com/product/2",
-        "agent_name": "CarHub",
-        "category": "Car"
+      "id": "shirt002",
+      "sl_no": 2,
+      "product_name": "V-Neck T-Shirt",
+      "description": "Soft v-neck t-shirt for casual outings.",
+      "images": ["https://example.com/shirt002.png"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["Red", "Black"],
+      "price": 2099,
+      "offer_price": 1599,
+      "affiate_link": "https://affiliate.example.com/product/shirt002",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 3,
-        "product_name": "Product 3",
-        "description": "This is the description for product 3.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "L",
-            "S",
-            "XL"
-        ],
-        "colors": [
-            "Red",
-            "Blue",
-            "Gray",
-            "Orange",
-            "White",
-            "Black"
-        ],
-        "price": 41851,
-        "offer_price": 48862,
-        "affiate_link": "https://affiliate.example.com/product/3",
-        "agent_name": "DriveMax",
-        "category": "Luxury"
+      "id": "shirt003",
+      "sl_no": 3,
+      "product_name": "Polo Shirt",
+      "description": "Stylish cotton polo shirt for office and casual wear.",
+      "images": ["https://example.com/shirt003.png"],
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["White", "Navy", "Black"],
+      "price": 2499,
+      "offer_price": 1999,
+      "affiate_link": "https://affiliate.example.com/product/shirt003",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 4,
-        "product_name": "Product 4",
-        "description": "This is the description for product 4.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "M",
-            "XL",
-            "S",
-            "XXL",
-            "L"
-        ],
-        "colors": [
-            "Orange",
-            "Black",
-            "White",
-            "Gray",
-            "Blue",
-            "Red"
-        ],
-        "price": 61848,
-        "offer_price": 35923,
-        "affiate_link": "https://affiliate.example.com/product/4",
-        "agent_name": "CarHub",
-        "category": "Car"
+      "id": "shirt004",
+      "sl_no": 4,
+      "product_name": "Striped T-Shirt",
+      "description": "Casual striped t-shirt with soft cotton fabric.",
+      "images": ["https://example.com/shirt004.png"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["Green", "Black"],
+      "price": 2199,
+      "offer_price": 1699,
+      "affiate_link": "https://affiliate.example.com/product/shirt004",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 5,
-        "product_name": "Product 5",
-        "description": "This is the description for product 5.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "XL",
-            "L",
-            "XXL",
-            "M"
-        ],
-        "colors": [
-            "Orange",
-            "White"
-        ],
-        "price": 25174,
-        "offer_price": 29878,
-        "affiate_link": "https://affiliate.example.com/product/5",
-        "agent_name": "AutoWorld",
-        "category": "Luxury"
+      "id": "shirt005",
+      "sl_no": 5,
+      "product_name": "Graphic Tee",
+      "description": "Cotton t-shirt with trendy graphic print.",
+      "images": ["https://example.com/shirt005.png"],
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["White", "Black", "Grey"],
+      "price": 2299,
+      "offer_price": 1799,
+      "affiate_link": "https://affiliate.example.com/product/shirt005",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 6,
-        "product_name": "Product 6",
-        "description": "This is the description for product 6.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "L",
-            "S",
-            "XXL",
-            "XL"
-        ],
-        "colors": [
-            "White",
-            "Black",
-            "Orange",
-            "Red",
-            "Gray"
-        ],
-        "price": 80666,
-        "offer_price": 64662,
-        "affiate_link": "https://affiliate.example.com/product/6",
-        "agent_name": "CarHub",
-        "category": "Car"
+      "id": "shirt006",
+      "sl_no": 6,
+      "product_name": "Long Sleeve T-Shirt",
+      "description": "Comfortable long sleeve t-shirt for casual wear.",
+      "images": ["https://example.com/shirt006.png"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["Blue", "Black"],
+      "price": 2399,
+      "offer_price": 1899,
+      "affiate_link": "https://affiliate.example.com/product/shirt006",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 7,
-        "product_name": "Product 7",
-        "description": "This is the description for product 7.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "L",
-            "S"
-        ],
-        "colors": [
-            "Blue",
-            "White",
-            "Orange",
-            "Red"
-        ],
-        "price": 42373,
-        "offer_price": 45812,
-        "affiate_link": "https://affiliate.example.com/product/7",
-        "agent_name": "AutoWorld",
-        "category": "Sports"
+      "id": "shirt007",
+      "sl_no": 7,
+      "product_name": "Henley Shirt",
+      "description": "Casual henley shirt with button details.",
+      "images": ["https://example.com/shirt007.png"],
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["White", "Black"],
+      "price": 2599,
+      "offer_price": 2099,
+      "affiate_link": "https://affiliate.example.com/product/shirt007",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 8,
-        "product_name": "Product 8",
-        "description": "This is the description for product 8.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "L",
-            "S"
-        ],
-        "colors": [
-            "Black",
-            "Gray",
-            "White",
-            "Red"
-        ],
-        "price": 31437,
-        "offer_price": 20518,
-        "affiate_link": "https://affiliate.example.com/product/8",
-        "agent_name": "DriveMax",
-        "category": "Sports"
+      "id": "shirt008",
+      "sl_no": 8,
+      "product_name": "Pocket T-Shirt",
+      "description": "Simple t-shirt with front pocket design.",
+      "images": ["https://example.com/shirt008.png"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["Grey", "Black"],
+      "price": 1999,
+      "offer_price": 1499,
+      "affiate_link": "https://affiliate.example.com/product/shirt008",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 9,
-        "product_name": "Product 9",
-        "description": "This is the description for product 9.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "M",
-            "L",
-            "XL"
-        ],
-        "colors": [
-            "White",
-            "Blue"
-        ],
-        "price": 97737,
-        "offer_price": 58581,
-        "affiate_link": "https://affiliate.example.com/product/9",
-        "agent_name": "CarHub",
-        "category": "Convertible"
+      "id": "shirt009",
+      "sl_no": 9,
+      "product_name": "Slim Fit T-Shirt",
+      "description": "Slim fit cotton t-shirt for a modern look.",
+      "images": ["https://example.com/shirt009.png"],
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["Black", "Red"],
+      "price": 2499,
+      "offer_price": 1999,
+      "affiate_link": "https://affiliate.example.com/product/shirt009",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 10,
-        "product_name": "Product 10",
-        "description": "This is the description for product 10.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "XL",
-            "L",
-            "S",
-            "M",
-            "XXL"
-        ],
-        "colors": [
-            "Orange",
-            "Blue",
-            "Red",
-            "Black",
-            "White"
-        ],
-        "price": 82587,
-        "offer_price": 79519,
-        "affiate_link": "https://affiliate.example.com/product/10",
-        "agent_name": "CarHub",
-        "category": "Car"
+      "id": "shirt010",
+      "sl_no": 10,
+      "product_name": "Basic Crew Neck",
+      "description": "Essential crew neck t-shirt for daily wear.",
+      "images": ["https://example.com/shirt010.png"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["White", "Black", "Blue"],
+      "price": 1899,
+      "offer_price": 1399,
+      "affiate_link": "https://affiliate.example.com/product/shirt010",
+      "agent_name": "FashionHub",
+      "category": "T-Shirt",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
+    },
+ 
+   {
+      "id": "pants001",
+      "sl_no": 11,
+      "product_name": "Slim Fit Jeans",
+      "description": "Stylish slim fit jeans.",
+      "images": ["https://example.com/pants001.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Blue", "Black"],
+      "price": 3999,
+      "offer_price": 2999,
+      "affiate_link": "https://affiliate.example.com/product/pants001",
+      "agent_name": "FashionHub",
+      "category": "Jeans",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 11,
-        "product_name": "Product 11",
-        "description": "This is the description for product 11.",
-        "images": [
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "XL",
-            "M",
-            "XXL"
-        ],
-        "colors": [
-            "Gray",
-            "Black",
-            "Red",
-            "White"
-        ],
-        "price": 68938,
-        "offer_price": 54021,
-        "affiate_link": "https://affiliate.example.com/product/11",
-        "agent_name": "AutoWorld",
-        "category": "Convertible"
+      "id": "pants002",
+      "sl_no": 12,
+      "product_name": "Regular Fit Chinos",
+      "description": "Comfortable regular fit chinos.",
+      "images": ["https://example.com/pants002.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Beige", "Black"],
+      "price": 3599,
+      "offer_price": 2999,
+      "affiate_link": "https://affiliate.example.com/product/pants002",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 12,
-        "product_name": "Product 12",
-        "description": "This is the description for product 12.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "XL",
-            "M"
-        ],
-        "colors": [
-            "Red",
-            "Blue",
-            "Black",
-            "Orange"
-        ],
-        "price": 92154,
-        "offer_price": 59613,
-        "affiate_link": "https://affiliate.example.com/product/12",
-        "agent_name": "CarHub",
-        "category": "Convertible"
+      "id": "pants003",
+      "sl_no": 13,
+      "product_name": "Cargo Pants",
+      "description": "Stylish cargo pants with multiple pockets.",
+      "images": ["https://example.com/pants003.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Khaki", "Black"],
+      "price": 3799,
+      "offer_price": 3299,
+      "affiate_link": "https://affiliate.example.com/product/pants003",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 13,
-        "product_name": "Product 13",
-        "description": "This is the description for product 13.",
-        "images": [
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "XL",
-            "M",
-            "S"
-        ],
-        "colors": [
-            "White",
-            "Red",
-            "Blue"
-        ],
-        "price": 50766,
-        "offer_price": 42625,
-        "affiate_link": "https://affiliate.example.com/product/13",
-        "agent_name": "SpeedyMotors",
-        "category": "Sports"
+      "id": "pants004",
+      "sl_no": 14,
+      "product_name": "Slim Fit Trousers",
+      "description": "Formal slim fit trousers.",
+      "images": ["https://example.com/pants004.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Grey", "Black"],
+      "price": 4499,
+      "offer_price": 3999,
+      "affiate_link": "https://affiliate.example.com/product/pants004",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 14,
-        "product_name": "Product 14",
-        "description": "This is the description for product 14.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "XL",
-            "XXL"
-        ],
-        "colors": [
-            "Gray",
-            "Orange",
-            "Red",
-            "Black",
-            "White"
-        ],
-        "price": 55824,
-        "offer_price": 59568,
-        "affiate_link": "https://affiliate.example.com/product/14",
-        "agent_name": "AutoWorld",
-        "category": "Convertible"
+      "id": "pants005",
+      "sl_no": 15,
+      "product_name": "Denim Shorts",
+      "description": "Casual denim shorts.",
+      "images": ["https://example.com/pants005.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Blue", "Black"],
+      "price": 2499,
+      "offer_price": 1999,
+      "affiate_link": "https://affiliate.example.com/product/pants005",
+      "agent_name": "FashionHub",
+      "category": "Shorts",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 15,
-        "product_name": "Product 15",
-        "description": "This is the description for product 15.",
-        "images": [
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "S",
-            "L",
-            "XXL",
-            "M"
-        ],
-        "colors": [
-            "White",
-            "Black",
-            "Gray",
-            "Orange",
-            "Blue"
-        ],
-        "price": 69269,
-        "offer_price": 71260,
-        "affiate_link": "https://affiliate.example.com/product/15",
-        "agent_name": "DriveMax",
-        "category": "Car"
+      "id": "pants006",
+      "sl_no": 16,
+      "product_name": "Jogger Pants",
+      "description": "Comfortable cotton jogger pants.",
+      "images": ["https://example.com/pants006.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Grey", "Black"],
+      "price": 2999,
+      "offer_price": 2499,
+      "affiate_link": "https://affiliate.example.com/product/pants006",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 16,
-        "product_name": "Product 16",
-        "description": "This is the description for product 16.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "L",
-            "XXL",
-            "XL",
-            "M",
-            "S"
-        ],
-        "colors": [
-            "Blue",
-            "White",
-            "Gray",
-            "Orange",
-            "Black",
-            "Red"
-        ],
-        "price": 88550,
-        "offer_price": 63500,
-        "affiate_link": "https://affiliate.example.com/product/16",
-        "agent_name": "AutoWorld",
-        "category": "Sports"
+      "id": "pants007",
+      "sl_no": 17,
+      "product_name": "Track Pants",
+      "description": "Lightweight track pants for workouts.",
+      "images": ["https://example.com/pants007.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Black", "Navy"],
+      "price": 2799,
+      "offer_price": 2299,
+      "affiate_link": "https://affiliate.example.com/product/pants007",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 17,
-        "product_name": "Product 17",
-        "description": "This is the description for product 17.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds"
-        ],
-        "sizes": [
-            "XL"
-        ],
-        "colors": [
-            "White",
-            "Gray"
-        ],
-        "price": 80844,
-        "offer_price": 67423,
-        "affiate_link": "https://affiliate.example.com/product/17",
-        "agent_name": "CarHub",
-        "category": "Convertible"
+      "id": "pants008",
+      "sl_no": 18,
+      "product_name": "Formal Pants",
+      "description": "Elegant formal pants for office.",
+      "images": ["https://example.com/pants008.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Black", "Grey"],
+      "price": 4199,
+      "offer_price": 3699,
+      "affiate_link": "https://affiliate.example.com/product/pants008",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 18,
-        "product_name": "Product 18",
-        "description": "This is the description for product 18.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f"
-        ],
-        "sizes": [
-            "M",
-            "XL",
-            "S",
-            "L",
-            "XXL"
-        ],
-        "colors": [
-            "White"
-        ],
-        "price": 37584,
-        "offer_price": 72750,
-        "affiate_link": "https://affiliate.example.com/product/18",
-        "agent_name": "DriveMax",
-        "category": "Car"
+      "id": "pants009",
+      "sl_no": 19,
+      "product_name": "Casual Pants",
+      "description": "Everyday casual pants.",
+      "images": ["https://example.com/pants009.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Blue", "Black"],
+      "price": 3599,
+      "offer_price": 2999,
+      "affiate_link": "https://affiliate.example.com/product/pants009",
+      "agent_name": "FashionHub",
+      "category": "Pants",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     },
     {
-        "sl_no": 19,
-        "product_name": "Product 19",
-        "description": "This is the description for product 19.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "XL"
-        ],
-        "colors": [
-            "Black",
-            "Blue"
-        ],
-        "price": 30314,
-        "offer_price": 44356,
-        "affiate_link": "https://affiliate.example.com/product/19",
-        "agent_name": "CarHub",
-        "category": "Convertible"
-    },
-    {
-        "sl_no": 20,
-        "product_name": "Product 20",
-        "description": "This is the description for product 20.",
-        "images": [
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "M",
-            "S",
-            "L"
-        ],
-        "colors": [
-            "Black",
-            "Blue",
-            "Orange",
-            "White",
-            "Gray"
-        ],
-        "price": 75100,
-        "offer_price": 26064,
-        "affiate_link": "https://affiliate.example.com/product/20",
-        "agent_name": "DriveMax",
-        "category": "Luxury"
-    },
-    {
-        "sl_no": 21,
-        "product_name": "Product 21",
-        "description": "This is the description for product 21.",
-        "images": [
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "XXL",
-            "XL",
-            "S",
-            "M"
-        ],
-        "colors": [
-            "Gray",
-            "Orange",
-            "Blue",
-            "Red"
-        ],
-        "price": 45582,
-        "offer_price": 87065,
-        "affiate_link": "https://affiliate.example.com/product/21",
-        "agent_name": "AutoWorld",
-        "category": "Luxury"
-    },
-    {
-        "sl_no": 22,
-        "product_name": "Product 22",
-        "description": "This is the description for product 22.",
-        "images": [
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "S",
-            "L",
-            "M",
-            "XXL",
-            "XL"
-        ],
-        "colors": [
-            "White",
-            "Gray",
-            "Blue",
-            "Orange",
-            "Black"
-        ],
-        "price": 89565,
-        "offer_price": 75735,
-        "affiate_link": "https://affiliate.example.com/product/22",
-        "agent_name": "AutoWorld",
-        "category": "Sports"
-    },
-    {
-        "sl_no": 23,
-        "product_name": "Product 23",
-        "description": "This is the description for product 23.",
-        "images": [
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "XXL",
-            "M"
-        ],
-        "colors": [
-            "Gray"
-        ],
-        "price": 65471,
-        "offer_price": 64622,
-        "affiate_link": "https://affiliate.example.com/product/23",
-        "agent_name": "SpeedyMotors",
-        "category": "Sports"
-    },
-    {
-        "sl_no": 24,
-        "product_name": "Product 24",
-        "description": "This is the description for product 24.",
-        "images": [
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg",
-            "https://lh3.googleusercontent.com/1L9yu33f0SL7KpVBAVpewc7VBHwkSoD-A30mt0AhXJyledYzkvzFtX9dkm_Lf4_sKNdYk9Ri7iEqqJFLPewEMNkMk0ZLf2CpvhkvVV_RCaoWmEYyJepTR_7fzJ8zLLetWu4rHns-aYk_AAs-WnvHUt_Um3h7uPR1lD5UnqEh2wBj9RXu8hTdGp4f",
-            "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww"
-        ],
-        "sizes": [
-            "S",
-            "XXL",
-            "M",
-            "XL"
-        ],
-        "colors": [
-            "Blue",
-            "White",
-            "Gray",
-            "Black"
-        ],
-        "price": 50710,
-        "offer_price": 49326,
-        "affiate_link": "https://affiliate.example.com/product/24",
-        "agent_name": "AutoWorld",
-        "category": "Car"
-    },
-    {
-        "sl_no": 25,
-        "product_name": "Product 25",
-        "description": "This is the description for product 25.",
-        "images": [
-            "https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?eight=399&width=711&fit=bounds",
-            "https://images.cars.com/cldstatic/wp-content/uploads/chevrolet-corvette-stingray-2022-oem-02-angle--exterior--front--orange.jpg"
-        ],
-        "sizes": [
-            "S",
-            "XXL",
-            "M",
-            "XL",
-            "L"
-        ],
-        "colors": [
-            "Red",
-            "Gray",
-            "Black"
-        ],
-        "price": 66073,
-        "offer_price": 52559,
-        "affiate_link": "https://affiliate.example.com/product/25",
-        "agent_name": "SpeedyMotors",
-        "category": "Car"
+      "id": "pants010",
+      "sl_no": 20,
+      "product_name": "Chino Shorts",
+      "description": "Comfortable cotton chino shorts.",
+      "images": ["https://example.com/pants010.png"],
+      "sizes": ["30", "32", "34"],
+      "colors": ["Beige", "Black"],
+      "price": 2699,
+      "offer_price": 2199,
+      "affiate_link": "https://affiliate.example.com/product/pants010",
+      "agent_name": "FashionHub",
+      "category": "Shorts",
+      "created_at": "2025-08-27T08:15:43.896Z",
+      "updated_at": "2025-08-27T08:15:43.896Z"
     }
 ]
+
+ 
+ 

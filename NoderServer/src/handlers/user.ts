@@ -1,5 +1,16 @@
+import sendOtpEmail from "../config/emailService";
 import prisma from "../db"
 import { hashPassword, createJWT, comparePassword } from "../modules/auth";
+
+
+
+
+
+// Generate random 6-digit OTP
+const generateOTP = () => {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
 
 
 export const createNewUser = async (req, res, next)=>{
@@ -15,6 +26,18 @@ export const createNewUser = async (req, res, next)=>{
             }
         })
         const token = createJWT(user);
+        user.otpCode = generateOTP();
+        user.otpExpires = new Date(Date.now() + 10 * 60000); // OTP expires in 10 minutes
+        await prisma.user.update({
+            where: { id: user.id },
+            data: { otpCode: user.otpCode, otpExpires: user.otpExpires }
+        });
+
+        // Send OTP email
+        const emailSent = await sendOtpEmail(user.email, user.otpCode);
+        if (!emailSent) {
+        return res.status(500).json({ message: 'Failed to send OTP. Please try again.' });
+        }
         res.json({"accessToken": token, "success":"User created successfully!", "user": user}) 
     } catch(e){
         e.type = 'input'

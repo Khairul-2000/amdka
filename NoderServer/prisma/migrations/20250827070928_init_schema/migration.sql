@@ -3,7 +3,11 @@ CREATE TABLE "public"."User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "phone" TEXT,
     "password" TEXT NOT NULL,
+    "otpCode" TEXT,
+    "otpExpires" TIMESTAMP(3),
+    "isVerified" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

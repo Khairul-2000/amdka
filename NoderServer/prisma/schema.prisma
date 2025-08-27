@@ -15,6 +15,10 @@ datasource db {
 }
 
 
+enum UserRole {
+  SUPERADMIN
+  ADMIN
+}
 
 
 model User {
@@ -23,9 +27,20 @@ model User {
   name  String
   phone String?
   password String
+  otpCode     String? 
+  otpExpires DateTime?
+  isVerified Boolean @default(false)
+
 }
 
-
+model admin {
+  id    String @id @default(cuid())
+  email String @unique
+  name  String
+  phone String?
+  password String
+  role    UserRole @default(ADMIN)
+}
 
 model Product {
   id            String   @id @default(cuid())
