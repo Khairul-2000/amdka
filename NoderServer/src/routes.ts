@@ -51,6 +51,11 @@ router.get("/admin/all",protect, getAllAdmins);
 // router.get("/search", getSearchProducts)   // GET with query parameters
 
 
-// add wishlist routes
+// // add wishlist routes
+// router.post("/wishlist", protect)
+
+
+
+
 
 export default router;
