@@ -341,3 +341,28 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
+
+
+
+// export const getSearchProducts = async (req, res) => {
+//   const { query } = req;
+
+//   try {
+//     const products = await prisma.product.findMany({
+//       where: {
+//         OR: [
+//           { product_name: { contains: query.name || "", mode: "insensitive" } },
+//           { description: { contains: query.description || "", mode: "insensitive" } },
+//           { category: { contains: query.category || "", mode: "insensitive" } }
+//         ]
+//       }
+//     });
+//     res.json({ products });
+//   } catch (error) {
+//     console.error("Error searching products:", error);
+//     res.status(500).json({
+//       error: "Internal server error",
+//       message: error.message
+//     });
+//   }
+// };

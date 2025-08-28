@@ -13,9 +13,6 @@ export const hashPassword = (password)=>{
 }
 
 
-
-
-
 export const createJWT = (user)=>{
 
     const jwtSecret = process.env.JWT_SECRET;
@@ -25,7 +22,7 @@ export const createJWT = (user)=>{
 
     const token = jwt.sign({
         id: user.id, 
-        username: user.username
+        email: user.email
     }, 
 
     jwtSecret as string, {expiresIn: "25days"})

@@ -25,7 +25,6 @@ export const createNewUser = async (req, res, next)=>{
                 password: await hashPassword(req.body.password)
             }
         })
-        const token = createJWT(user);
         user.otpCode = generateOTP();
         user.otpExpires = new Date(Date.now() + 10 * 60000); // OTP expires in 10 minutes
         await prisma.user.update({
@@ -38,7 +37,7 @@ export const createNewUser = async (req, res, next)=>{
         if (!emailSent) {
         return res.status(500).json({ message: 'Failed to send OTP. Please try again.' });
         }
-        res.json({"accessToken": token, "success":"User created successfully!", "user": user}) 
+        res.json({"success":"User created successfully!", "user": user}) 
     } catch(e){
         e.type = 'input'
         next(e)
@@ -69,6 +68,48 @@ export const signin =  async(req, res)=>{
 
 
 }
+
+
+
+
+
+// Get user statistics
+export const getUserStats = async (req, res) => {
+    try {
+        const totalUsers = await prisma.user.count();
+        const verifiedUsers = await prisma.user.count({
+            where: { isVerified: true }
+        });
+        const usersToday = await prisma.user.count({
+            where: {
+                createdAt: {
+                    gte: new Date(Date.now() - 24 * 60 * 60 * 1000)
+                }
+            }
+        });
+        const usersThisWeek = await prisma.user.count({
+            where: {
+                createdAt: {
+                    gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+                }
+            }
+        });
+
+        res.json({
+            total_users: totalUsers,
+            verified_users: verifiedUsers,
+            unverified_users: totalUsers - verifiedUsers,
+            users_today: usersToday,
+            users_this_week: usersThisWeek,
+            verification_rate: totalUsers > 0 ? Math.round((verifiedUsers / totalUsers) * 100) : 0
+        });
+    } catch (error) {
+        console.error("Error getting user stats:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
 
 
 
@@ -116,3 +157,7 @@ export const deleteUser = async (req, res) => {
         });
     }
 };
+
+
+
+

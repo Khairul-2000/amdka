@@ -42,5 +42,10 @@ export const verifyOtp = async (req, res) => {
 
     // OTP is valid, proceed with login
     const token = createJWT(user);
-    res.json({ accessToken: token, message: 'Login successful'});
+    await prisma.user.update({
+        where: { id: user.id },
+        data: { otpCode: null, otpExpires: null }
+    });
+    
+    res.json({ accessToken: token, message: 'Registration successful'});
 };
