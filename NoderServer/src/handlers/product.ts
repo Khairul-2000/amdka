@@ -66,7 +66,7 @@ export const upload = multer({
 });
 
 // Helper function to generate image URLs
-const generateImageUrls = (files: Express.Multer.File[], req): string[] => {
+export const generateImageUrls = (files: Express.Multer.File[], req): string[] => {
   if (!files || files.length === 0) return [];
   
   const baseUrl = `${req.protocol}://${req.get('host')}`;
@@ -92,6 +92,22 @@ export const createProduct = async (req, res) => {
       agent_name,
       category
     } = req.body;
+
+    const userId = req.user.id;
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can create products"
+      });
+    }
+
 
     // Validate required fields
     if (!sl_no || !product_name || !description || !price || !offer_price || !agent_name || !category) {
@@ -259,8 +275,23 @@ export const getProductById = async (req, res) => {
 // Update product with optional image upload
 export const updateProduct = async (req, res) => {
   const {id} = req.params;
+  const userId = req.user.id;
 
   try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can update products"
+      });
+    }
+
     // Get existing product to preserve current images if no new ones uploaded
     const existingProduct = await prisma.product.findUnique({
       where: { id }
@@ -323,8 +354,23 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   const { id } = req.params;
+  const userId = req.user.id;
 
   try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can delete products"
+      });
+    }
+
     const deletedProduct = await prisma.product.delete({
       where: { id }
     });
@@ -341,28 +387,3 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
-
-
-
-// export const getSearchProducts = async (req, res) => {
-//   const { query } = req;
-
-//   try {
-//     const products = await prisma.product.findMany({
-//       where: {
-//         OR: [
-//           { product_name: { contains: query.name || "", mode: "insensitive" } },
-//           { description: { contains: query.description || "", mode: "insensitive" } },
-//           { category: { contains: query.category || "", mode: "insensitive" } }
-//         ]
-//       }
-//     });
-//     res.json({ products });
-//   } catch (error) {
-//     console.error("Error searching products:", error);
-//     res.status(500).json({
-//       error: "Internal server error",
-//       message: error.message
-//     });
-//   }
-// };

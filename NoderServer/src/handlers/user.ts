@@ -1,6 +1,7 @@
 import sendOtpEmail from "../config/emailService";
 import prisma from "../db"
 import { hashPassword, createJWT, comparePassword } from "../modules/auth";
+import { generateImageUrls } from "./product";
 
 
 
@@ -75,7 +76,29 @@ export const signin =  async(req, res)=>{
 
 // Get user statistics
 export const getUserStats = async (req, res) => {
+    const userId = req.user.id;
     try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can access user statistics"
+      });
+    }
+
+
+
+
+
+
+
+
         const totalUsers = await prisma.user.count();
         const verifiedUsers = await prisma.user.count({
             where: { isVerified: true }
@@ -114,7 +137,24 @@ export const getUserStats = async (req, res) => {
 
 
 export const getAllUsers = async (req, res) => {
+    const userId = req.user.id;
     try {
+
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can create users"
+      });
+    }
+
+
         const users = await prisma.user.findMany();
         res.json(users);
     } catch (error) {
@@ -125,7 +165,23 @@ export const getAllUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
     const { id } = req.params;
+    const userId = req.user.id;
     try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can access user details"
+      });
+    }
+
+
         const user = await prisma.user.findUnique({
             where: { id }
         });
@@ -139,9 +195,52 @@ export const getUserById = async (req, res) => {
 };
 
 
+// Update User Info
+
+export const updateUser = async (req, res) => {
+    const userId = req.user.id;
+    try {
+
+      // Handle uploaded images
+      const uploadedFiles = req.files as Express.Multer.File[];
+      const imageUrls = generateImageUrls(uploadedFiles, req);
+
+        const updatedUser = await prisma.user.update({
+            where: { id: userId },
+            data: {
+                ...req.body,
+                profilePic: imageUrls[0] // Assuming you want to store the first image as profilePic
+            }
+        });
+        res.json(updatedUser);
+    } catch (error) {
+        console.error("Error updating user:", error);
+        res.status(500).json({
+            error: "Internal server error",
+            message: error.message
+        });
+    }
+};
+
 export const deleteUser = async (req, res) => {
     const { id } = req.params;
+    const userId = req.user.id;
     try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can delete users"
+      });
+    }
+
+
         const deletedUser = await prisma.user.delete({
             where: { id }
         });

@@ -1,13 +1,31 @@
 import prisma from "../db";
 import { comparePassword, createJWT, hashPassword } from "../modules/auth";
+import { generateImageUrls } from "./product";
 
 
 
 export const createNewAdmin = async (req, res) => {
     const { email, name, phone, role } = req.body;
+    const userId = req.user.id;
     if (!email || !name || !role) {
         return res.status(400).json({ error: "Missing required fields" });
     }
+
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can create products"
+      });
+    }
+
+
 
     
 
@@ -62,16 +80,53 @@ export const adminSignIn = async (req, res) => {
     }
 };
 
+export const updateSelfProfile = async (req, res)=>{
+    const userId = req.user.id;
+    const { email, name} = req.body;
+
+    try {
+
+        // Handle uploaded images
+        const uploadedFiles = req.files as Express.Multer.File[];
+        const imageUrls = generateImageUrls(uploadedFiles, req);
+        
+        const updatedAdmin = await prisma.admin.update({
+            where: { id: userId },
+            data: {
+                email,
+                name,
+                profilePic: imageUrls[0] // Assuming single profile picture
+            }
+        });
+        res.status(200).json(updatedAdmin);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to update admin profile" });
+    }
+}
+
 
 export const updateAdmin = async (req, res) => {
     const { id } = req.params;
     const data = req.body;
+    const userId = req.user.id;
 
-    if (!data.email || !data.name || !data.phone) {
-        return res.status(400).json({ error: "Missing required fields" });
-    }
 
     try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can create products"
+      });
+    }
+
+
         const updatedAdmin = await prisma.admin.update({
             where: { id },
             data: data
@@ -118,7 +173,23 @@ export const deleteAdmin = async (req, res)=> {
 
 
 export const getAllAdmins = async (req, res) => {
+    const userId = req.user.id;
     try {
+
+    const admin = await prisma.admin.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    if(!admin) {
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Only admins can create products"
+      });
+    }
+
+
         const admins = await prisma.admin.findMany();
         res.status(200).json(admins);
     } catch (error) {

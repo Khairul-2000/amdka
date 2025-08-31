@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Linux Terminal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Ubuntu Mono', 'Courier New', monospace;
+            background: #000;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 0;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        .terminal {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            padding: 10px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .terminal::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.02) 2px,
+                rgba(0, 255, 0, 0.02) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+            animation: scanlines 0.1s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        .log-line {
+            margin: 0;
+            opacity: 0;
+            animation: typewriter 0.05s ease-out forwards;
+            white-space: pre-wrap;
+        }
+
+        .log-line.info { color: #ffffff; }
+        .log-line.ok { color: #00ff00; }
+        .log-line.warning { color: #ffff00; }
+        .log-line.error { color: #ff0000; }
+        .log-line.blue { color: #5555ff; }
+
+        .prompt-line {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .user {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .hostname {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .path {
+            color: #5555ff;
+            font-weight: bold;
+        }
+
+        .command {
+            color: #ffffff;
+        }
+
+        .output {
+            color: #ffffff;
+        }
+
+        .cursor {
+            background: #00ff00;
+            width: 8px;
+            height: 16px;
+            display: inline-block;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+
+        .typing-cursor {
+            background: #00ff00;
+            width: 2px;
+            height: 16px;
+            display: inline-block;
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes typewriter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .server-status {
+            color: #00ff00;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(0, 255, 0, 1), 0 0 25px rgba(0, 255, 0, 0.8);
+            }
+        }
+
+        .flicker {
+            animation: flicker 0.15s infinite linear alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal flicker" id="terminal">
+        <div class="log-line info">Last login: Sun Aug 31 14:23:45 2025 from 192.168.1.100</div>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        let isTyping = false;
+        
+        const commands = [
+            {
+                command: 'systemctl status',
+                output: [
+                    '● ubuntu-server',
+                    '    State: running',
+                    '     Jobs: 0 queued',
+                    '   Failed: 0 units',
+                    '    Since: Sun 2025-08-31 14:20:12 UTC; 4min ago',
+                    '   CGroup: /',
+                    '           └─init.scope',
+                    '             └─1 /sbin/init'
+                ]
+            },
+            {
+                command: 'uptime',
+                output: [
+                    ' 14:24:32 up 4 min,  1 user,  load average: 0.08, 0.12, 0.05'
+                ]
+            },
+            {
+                command: 'free -h',
+                output: [
+                    '               total        used        free      shared  buff/cache   available',
+                    'Mem:           7.8Gi       0.9Gi       6.2Gi       1.0Mi       0.7Gi       6.7Gi',
+                    'Swap:          2.0Gi          0B       2.0Gi'
+                ]
+            },
+            {
+                command: 'df -h /',
+                output: [
+                    'Filesystem      Size  Used Avail Use% Mounted on',
+                    '/dev/sda1        98G  4.2G   89G   5% /'
+                ]
+            },
+            {
+                command: 'ps aux | head -10',
+                output: [
+                    'USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND',
+                    'root           1  0.0  0.1 166996 11484 ?        Ss   14:20   0:01 /sbin/init',
+                    'root           2  0.0  0.0      0     0 ?        S    14:20   0:00 [kthreadd]',
+                    'root           3  0.0  0.0      0     0 ?        I<   14:20   0:00 [rcu_gp]',
+                    'root           4  0.0  0.0      0     0 ?        I<   14:20   0:00 [rcu_par_gp]',
+                    'root           5  0.0  0.0      0     0 ?        I<   14:20   0:00 [netns]',
+                    'root           7  0.0  0.0      0     0 ?        I<   14:20   0:00 [kworker/0:0H-events_highpri]',
+                    'root           9  0.0  0.0      0     0 ?        I<   14:20   0:00 [mm_percpu_wq]',
+                    'root          10  0.0  0.0      0     0 ?        S    14:20   0:00 [rcu_tasks_rude_]'
+                ]
+            },
+            {
+                command: 'netstat -tuln | grep LISTEN',
+                output: [
+                    'tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     ',
+                    'tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN     ',
+                    'tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN     ',
+                    'tcp6       0      0 :::22                   :::*                    LISTEN     ',
+                    'tcp6       0      0 :::80                   :::*                    LISTEN     ',
+                    'tcp6       0      0 :::443                  :::*                    LISTEN     '
+                ]
+            },
+            {
+                command: 'tail -5 /var/log/syslog',
+                output: [
+                    'Aug 31 14:24:15 ubuntu-server systemd[1]: Started Session 2 of user root.',
+                    'Aug 31 14:24:20 ubuntu-server kernel: [  240.123456] TCP: request_sock_TCP: Possible SYN flooding on port 80.',
+                    'Aug 31 14:24:25 ubuntu-server sshd[1247]: Accepted publickey for root from 192.168.1.100 port 45678 ssh2: RSA SHA256:abc123def456',
+                    'Aug 31 14:24:30 ubuntu-server systemd[1]: Started User Manager for UID 1000.',
+                    'Aug 31 14:24:32 ubuntu-server cron[1156]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)'
+                ]
+            },
+            {
+                command: 'echo "SERVER STATUS: ONLINE" | cowsay',
+                output: [
+                    ' _____________________',
+                    '< SERVER STATUS: ONLINE >',
+                    ' ---------------------',
+                    '        \\   ^__^',
+                    '         \\  (oo)\\_______',
+                    '            (__)\\       )\\/\\',
+                    '                ||----w |',
+                    '                ||     ||'
+                ]
+            }
+        ];
+
+        const liveMessages = [
+            'Aug 31 14:24:45 ubuntu-server kernel: [  265.789012] nouveau 0000:01:00.0: DRM: VT-d detected, disabling MSI',
+            'Aug 31 14:24:50 ubuntu-server systemd[1]: Starting Clean up any mess left by 0anacron...',
+            'Aug 31 14:24:55 ubuntu-server NetworkManager[892]: <info>  [1693487095.4321] dhcp4 (eth0): state changed unknown -> bound',
+            'Aug 31 14:25:00 ubuntu-server cron[1156]: (CRON) INFO (pidfile fd = 3)',
+            'Aug 31 14:25:05 ubuntu-server systemd[1]: Started Update UTMP about System Runlevel Changes.',
+            'Aug 31 14:25:10 ubuntu-server kernel: [  290.456789] TCP: request_sock_TCP: Possible SYN flooding on port 22.',
+            'Aug 31 14:25:15 ubuntu-server sshd[1247]: Server listening on 0.0.0.0 port 22.',
+            'Aug 31 14:25:20 ubuntu-server systemd[1]: Starting Daily apt download activities...',
+            'Aug 31 14:25:25 ubuntu-server PackageKit[1523]: daemon start',
+            'Aug 31 14:25:30 ubuntu-server systemd[1]: Started Daily apt download activities.'
+        ];
+
+        let currentCommandIndex = 0;
+        let liveMessageIndex = 0;
+        let currentTime = new Date();
+
+        function createPrompt() {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            return `<span class="user">root</span>@<span class="hostname">ubuntu-server</span>:<span class="path">~</span>$ `;
+        }
+
+        function typeCommand(command, callback) {
+            if (isTyping) return;
+            isTyping = true;
+
+            const line = document.createElement('div');
+            line.className = 'log-line prompt-line';
+            line.innerHTML = createPrompt();
+            terminal.appendChild(line);
+
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < command.length) {
+                    line.innerHTML = createPrompt() + `<span class="command">${command.substring(0, i + 1)}</span><span class="typing-cursor"></span>`;
+                    i++;
+                } else {
+                    line.innerHTML = createPrompt() + `<span class="command">${command}</span>`;
+                    clearInterval(typingInterval);
+                    isTyping = false;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    setTimeout(callback, 200);
+                }
+            }, 50);
+        }
+
+        function showOutput(output, callback) {
+            let i = 0;
+            const outputInterval = setInterval(() => {
+                if (i < output.length) {
+                    const line = document.createElement('div');
+                    line.className = 'log-line output';
+                    line.textContent = output[i];
+                    if (output[i].includes('ONLINE')) {
+                        line.className += ' server-status';
+                    }
+                    terminal.appendChild(line);
+                    terminal.scrollTop = terminal.scrollHeight;
+                    i++;
+                } else {
+                    clearInterval(outputInterval);
+                    setTimeout(callback, 1000);
+                }
+            }, 100);
+        }
+
+        function runCommand(index) {
+            if (index >= commands.length) {
+                // Show final server status
+                setTimeout(() => {
+                    const statusLine = document.createElement('div');
+                    statusLine.className = 'log-line server-status';
+                    statusLine.innerHTML = '<br>[ OK ] SERVER ONLINE AND READY<span class="cursor"></span>';
+                    terminal.appendChild(statusLine);
+                    terminal.scrollTop = terminal.scrollHeight;
+                    
+                    // Start live monitoring
+                    setTimeout(startLiveMonitoring, 3000);
+                }, 1000);
+                return;
+            }
+
+            const cmd = commands[index];
+            typeCommand(cmd.command, () => {
+                showOutput(cmd.output, () => {
+                    runCommand(index + 1);
+                });
+            });
+        }
+
+        function startLiveMonitoring() {
+            setInterval(() => {
+                if (Math.random() > 0.3) {
+                    const message = liveMessages[liveMessageIndex % liveMessages.length];
+                    const now = new Date();
+                    const timeStr = `${now.toLocaleString('en-US', { month: 'short' })} ${now.getDate()} ${now.toTimeString().split(' ')[0]}`;
+                    const updatedMessage = message.replace(/Aug 31 \d{2}:\d{2}:\d{2}/, timeStr);
+                    
+                    const line = document.createElement('div');
+                    line.className = 'log-line info';
+                    line.textContent = updatedMessage;
+                    terminal.appendChild(line);
+                    
+                    // Keep only last 50 lines
+                    while (terminal.children.length > 50) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    
+                    terminal.scrollTop = terminal.scrollHeight;
+                    liveMessageIndex++;
+                }
+            }, 3000);
+
+            // Random system stats updates
+            setInterval(() => {
+                if (Math.random() > 0.8) {
+                    const stats = [
+                        'Load average: 0.' + Math.floor(Math.random() * 20).toString().padStart(2, '0'),
+                        'Memory usage: ' + Math.floor(Math.random() * 30 + 10) + '%',
+                        'Disk usage: ' + Math.floor(Math.random() * 10 + 85) + '%',
+                        'Network: ' + Math.floor(Math.random() * 1000) + ' MB/s',
+                        'Connections: ' + Math.floor(Math.random() * 100 + 50)
+                    ];
+                    
+                    const line = document.createElement('div');
+                    line.className = 'log-line ok';
+                    line.textContent = `[MONITOR] ${stats[Math.floor(Math.random() * stats.length)]}`;
+                    terminal.appendChild(line);
+                    
+                    while (terminal.children.length > 50) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    
+                    terminal.scrollTop = terminal.scrollHeight;
+                }
+            }, 5000);
+        }
+
+        // Add random flicker
+        setInterval(() => {
+            if (Math.random() > 0.98) {
+                terminal.style.opacity = '0.95';
+                setTimeout(() => {
+                    terminal.style.opacity = '1';
+                }, 50);
+            }
+        }, 100);
+
+        // Start the sequence
+        setTimeout(() => {
+            runCommand(0);
+        }, 1000);
+    </script>
+</body>
+</html>
