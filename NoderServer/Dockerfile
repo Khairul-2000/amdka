@@ -18,6 +18,9 @@ RUN npx prisma generate
 # Copy source code
 COPY ./src ./src
 
+# Copy index.html file
+COPY index.html ./
+
 # Create uploads directory for file uploads
 RUN mkdir -p uploads/products
 
