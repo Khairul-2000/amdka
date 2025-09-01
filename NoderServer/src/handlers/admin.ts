@@ -95,12 +95,14 @@ export const updateSelfProfile = async (req, res)=>{
             data: {
                 email,
                 name,
-                profilePic: imageUrls[0] // Assuming single profile picture
+                profilePic: imageUrls[0] 
             }
         });
         res.status(200).json(updatedAdmin);
     } catch (error) {
-        res.status(500).json({ error: "Failed to update admin profile" });
+        res.status(500).json({ message: "Failed to update admin profile by self",
+    error: error.message
+         });
     }
 }
 
@@ -133,7 +135,7 @@ export const updateAdmin = async (req, res) => {
         });
         res.status(200).json(updatedAdmin);
     } catch (error) {
-        res.status(500).json({ error: "Failed to update admin" });
+        res.status(500).json({ error: "Failed to update admin by admin panel" , errorMessage: error.message});
     }
 };
 

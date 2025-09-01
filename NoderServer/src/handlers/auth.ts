@@ -44,7 +44,7 @@ export const verifyOtp = async (req, res) => {
     const token = createJWT(user);
     await prisma.user.update({
         where: { id: user.id },
-        data: { otpCode: null, otpExpires: null }
+        data: { otpCode: null, otpExpires: null, isVerified: true }
     });
     
     res.json({ accessToken: token, message: 'Registration successful'});
