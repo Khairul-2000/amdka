@@ -38,7 +38,7 @@ export const createNewUser = async (req, res, next)=>{
         if (!emailSent) {
         return res.status(500).json({ message: 'Failed to send OTP. Please try again.' });
         }
-        res.json({"success":"User created successfully!", "user": user}) 
+        res.json({"success":"User created successfully!", "message": "OTP sent to email."}) 
     } catch(e){
         e.type = 'input'
         next(e)
@@ -56,6 +56,11 @@ export const signin =  async(req, res)=>{
 
     const isValid = await comparePassword(req.body.password, user.password);
 
+    if(!user.isVerified){
+        res.status(401)
+        res.json({message: 'User is not verified'})
+        return
+    }
 
     if(!isValid){
         res.status(401)
