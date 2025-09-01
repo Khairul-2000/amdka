@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.ts",
-    "dev": "nodemon ./src/index.ts",
+    "start": "node api.js && nodemon ./src/index.ts",
+    "dev": "node api.js && nodemon ./src/index.ts",
     "build": "tsc",
-    "start:prod": "node dist/index.js",
+    "start:prod": "node api.js && node dist/index.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
