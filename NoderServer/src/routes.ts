@@ -11,60 +11,39 @@ import { getProductsSearch } from "./handlers/search";
 
 const router = Router()
 
-// USER Authentication Routes
-router.post("/users/signup", createNewUser)
-router.post("/users/signin",signin)
+// Auth
+router.post("/auth/users/signup", createNewUser);
+router.post("/auth/users/signin", signin);
+router.post("/auth/admins/signup", protect, createNewAdmin);
+router.post("/auth/admins/signin", adminSignIn);
 
-// USER PROFILE UPDATE
-
-router.put("/users/update",upload.array('image', 1), protect, updateUser);
-
-
-//Product Related Routes
-router.get("/products", getProducts)
-router.get("/products/:id", getProductById)
-
-
-// Admin Panel Routes - with image upload support
-router.post("/products", upload.array('images', 10),protect, createProduct)
-router.put("/products/:id", upload.array('images', 10),protect, updateProduct)
-
-// Delete Products by admin
-router.delete("/products/:id", protect, deleteProduct)
-
-
-
-
-// User Management
-router.get("/users/stats",protect, getUserStats)
-router.get("/users/all",protect, getAllUsers)
-router.get("/users/:id",protect, getUserById)
-router.delete("/users/:id",protect, deleteUser)
-
-
-// OTP Verification Route
+// User
+router.get("/users", protect, getAllUsers);
+router.get("/users/stats", protect, getUserStats);
+router.get("/users/:id", protect, getUserById);
+router.put("/users/self", upload.array('image', 1), protect, updateUser);
+router.delete("/users/:id", protect, deleteUser);
 router.post("/users/verify-otp", verifyOtp);
 
+// Admin
+router.get("/admins", protect, getAllAdmins);
+router.put("/admins/self", upload.array('image', 1), protect, updateSelfProfile);
+router.put("/admins/:id", protect, updateAdmin);
+router.delete("/admins/:id", protect, deleteAdmin);
 
+// Products
+router.get("/products", getProducts);
+router.get("/products/:id", getProductById);
+router.post("/products", upload.array('images', 10), protect, createProduct);
+router.put("/products/:id", upload.array('images', 10), protect, updateProduct);
+router.delete("/products/:id", protect, deleteProduct);
 
-// Admin Panel Signup
-router.post("/admin/signup", protect, createNewAdmin);
-router.post("/admin/signin", adminSignIn);
-router.put("/admin/:id", protect, updateAdmin);
-router.put("/admin/self", upload.array('image', 1), protect, updateSelfProfile);
-router.delete("/admin/:id", protect, deleteAdmin);
+// Search
+router.get("/search", getProductsSearch);
 
-// Admin Panel
-router.get("/admin/all",protect, getAllAdmins);
-
-
-// Searching Products routes - support both GET and POST
-router.get("/search", getProductsSearch)   // GET with query parameters
-
-
-// add wishlist routes
-router.post("/wishlist/:id",protect, addToWishlist);
-router.get("/wishlist",protect, getWishlist);
+// Wishlist
+router.post("/wishlist/:id", protect, addToWishlist);
+router.get("/wishlist", protect, getWishlist);
 
 
 
